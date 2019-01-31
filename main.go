@@ -57,9 +57,9 @@ func main() {
 			os.Exit(1)
 		}
 
-		// settings file check
-		pathOfSettingFile := os.Getenv("HOME") + "/.config/cvfv/settings.toml"
-		lengthList, err := readLengthListByToml(pathOfSettingFile, layout)
+		// config file check
+		pathOfConfigFile := os.Getenv("HOME") + "/.config/cvfv/config.toml"
+		lengthList, err := readLengthListByToml(pathOfConfigFile, layout)
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "ERROR :%s", err)
 			os.Exit(1)
