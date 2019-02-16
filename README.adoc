@@ -5,6 +5,7 @@ CLI Tools for convert FixedLength file into VariableLength file
 == Install
 
 Use go get :
+
 ----
 $ go get -u github.com/hal0920/cvfv
 $ cd $GOPATH/src/github.com/hal0920/cvfv
@@ -12,6 +13,7 @@ $ go install
 ----
 
 When using it please add the following to PATH :
+
 ----
 $ export PATH=$PATH:$GOPATH/bin
 ----
@@ -22,11 +24,13 @@ $ export PATH=$PATH:$GOPATH/bin
 To use it please create the following setting file.
 
 Unix :
+
 ----
 ~/.config/cvfv/settings.toml
 ----
 
 Write following :
+
 ----
 [filelayout]
 [[filelayout.type]]
