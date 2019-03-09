@@ -28,10 +28,6 @@ type LayoutType struct {
 	Length []int  `toml:"length"`
 }
 
-const (
-	settings = "cvfv/settings.toml1"
-)
-
 func main() {
 
 	app := cli.NewApp()
@@ -61,7 +57,7 @@ func main() {
 		pathOfConfigFile := os.Getenv("HOME") + "/.config/cvfv/config.toml"
 		lengthList, err := readLengthListByToml(pathOfConfigFile, layout)
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "ERROR :%s", err)
+			fmt.Fprintln(os.Stderr, "ERROR :", err)
 			os.Exit(1)
 		}
 
@@ -118,7 +114,7 @@ func readLengthListByToml(tomlPath string, ltype string) (retList []int, ferr er
 		}
 	}
 
-	msg := "layout doesn't exit in setting's toml\n"
+	msg := "layout doesn't exit in setting's toml"
 	return nil, errors.New(msg)
 
 }
@@ -133,7 +129,7 @@ func convCSV(str string, layout []int) (ret string) {
 	from := 0
 	for _, digit := range layout {
 		ret += string([]rune(str)[from:from+digit]) + camma
-		from = from + digit
+		from += digit
 	}
 
 	return strings.TrimRight(ret, camma)
