@@ -1,37 +1,32 @@
-= cvfv 
+# cvfv
 
 CLI Tools for convert FixedLength file into VariableLength file
 
-== Install
+## Install
 
 Use go get :
 
-----
-$ go get -u github.com/hal0920/cvfv
-$ cd $GOPATH/src/github.com/hal0920/cvfv
-$ go install
-----
+```sh
+go get -u github.com/hal0920/cvfv
+cd $GOPATH/src/github.com/hal0920/cvfv
+go install
+```
 
 When using it please add the following to PATH :
 
-----
-$ export PATH=$PATH:$GOPATH/bin
-----
+```sh
+export PATH=$PATH:$GOPATH/bin
+```
 
-
-== Setting
+## Setting
 
 To use it please create the following setting file.
 
-Unix :
-
-----
-~/.config/cvfv/settings.toml
-----
+Unix : `~/.config/cvfv/settings.toml`
 
 Write following :
 
-----
+```toml
 [filelayout]
 [[filelayout.type]]
 id = "example1"
@@ -40,13 +35,14 @@ length =[1,2,3,4]
 [[filelayout.type]]
 id = "example2"
 length =[4,3,2,1]
-----
+```
 
-NOTE: The length specification is the number of characters. It is not the number of bytes.
+The length specification is the number of characters.
+It is not the number of bytes.
 
-== Usage
+## Usage
 
-----
+```text
 NAME:
    cvfv - Convert Fixed-length file into variable-length file
 
@@ -63,24 +59,25 @@ GLOBAL OPTIONS:
    --layout value, -l value  Fixed-length file layout
    --help, -h                show help
    --version, -v             print the version
-----
+```
 
-=== Example of use
+### Example of use
 
-* From File
-----
-$ cat test/test1.dat
+#### From File
+
+```sh
+cat test/test1.dat
 abbcccdddd
 1223334444
 
-$ cvfv -l example1 test/test1.dat
+cvfv -l example1 test/test1.dat
 a,bb,ccc,dddd
 1,22,333,4444
-----
+```
 
-* From Standard input
-----
-$ echo 1223334444 | cvfv -l example1
+#### From Standard input
+
+```sh
+echo 1223334444 | cvfv -l example1
 1,22,333,4444
-----
-
+```
