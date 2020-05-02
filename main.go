@@ -9,7 +9,7 @@ import (
 	"strings"
 
 	"github.com/BurntSushi/toml"
-	"github.com/urfave/cli"
+	"github.com/urfave/cli/v2"
 )
 
 // Config Config.
@@ -38,9 +38,10 @@ func main() {
 
 	var layout string
 	app.Flags = []cli.Flag{
-		cli.StringFlag{
+		&cli.StringFlag{
 			Name:        "layout, l",
 			Usage:       "Fixed-length file layout",
+			Aliases:     []string{"l"},
 			Destination: &layout,
 		},
 	}
@@ -61,14 +62,14 @@ func main() {
 			os.Exit(1)
 		}
 
-		switch len(context.Args()) {
+		switch context.Args().Len() {
 		case 0:
 			scanner := bufio.NewScanner(os.Stdin)
 			for scanner.Scan() {
 				fmt.Println(convCSV(scanner.Text(), lengthList))
 			}
 		case 1:
-			in, err := os.Open(context.Args()[0])
+			in, err := os.Open(context.Args().First())
 			if err != nil {
 				panic(err)
 			}
