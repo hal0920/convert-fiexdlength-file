@@ -27,13 +27,11 @@ Unix : `~/.config/cvfv/settings.toml`
 Write following :
 
 ```toml
-[filelayout]
-[[filelayout.type]]
-id = "example1"
+[layout]
+[layout.example1]
 length =[1,2,3,4]
 
-[[filelayout.type]]
-id = "example2"
+[layout.example2]
 length =[4,3,2,1]
 ```
 
@@ -50,15 +48,15 @@ USAGE:
    cvfv [global options] command [command options] [arguments...]
 
 VERSION:
-   0.0.1
+   0.1.0
 
 COMMANDS:
-     help, h  Shows a list of commands or help for one command
+   help, h  Shows a list of commands or help for one command
 
 GLOBAL OPTIONS:
-   --layout value, -l value  Fixed-length file layout
-   --help, -h                show help
-   --version, -v             print the version
+   --layout FILELAYOUT, -l FILELAYOUT  Fixed-length file layout FILELAYOUT
+   --help, -h                          show help (default: false)
+   --version, -v                       print the version (default: false)
 ```
 
 ### Example of use
